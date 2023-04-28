@@ -25,3 +25,9 @@ nav a:hover {
   cursor: pointer;
   background-color: rgb(110, 166, 187);
 }
+
+#components-layout-demo-responsive .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.2);
+}

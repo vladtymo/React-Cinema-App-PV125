@@ -1,28 +1,102 @@
 import './App.css';
 import { About } from './components/About';
 import { Home } from './components/Home';
-import { Menu } from './components/Menu';
 import { NotFound } from './components/NotFound';
 import { Privacy } from './components/Privacy';
 
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+
+import { HomeOutlined, FileDoneOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { Layout, Menu, theme } from 'antd';
+import React from 'react';
+const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
+  const {
+    token: { colorBgContainer },
+  } = theme.useToken();
+
   return (
-    <div className="App">
-      <header>
-        <h1>Hello React</h1>
-        <Menu />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-    </div>
+    <Layout>
+      <Sider
+        breakpoint="lg"
+        collapsedWidth="0"
+        onBreakpoint={(broken) => {
+          console.log(broken);
+        }}
+        onCollapse={(collapsed, type) => {
+          console.log(collapsed, type);
+        }}
+      >
+        <div className="logo" />
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={['1']}
+          items={[
+            {
+              key: 1,
+              icon:
+                <Link to="/">
+                  {React.createElement(HomeOutlined)}
+                </Link>,
+              label: `Home`,
+            },
+            {
+              key: 2,
+              icon:
+                <Link to="/about">
+                  {React.createElement(InfoCircleOutlined)}
+                </Link>,
+              label: `About`,
+            },
+            {
+              key: 3,
+              icon:
+                <Link to="/privacy">
+                  {React.createElement(FileDoneOutlined)}
+                </Link>,
+              label: `Privacy`,
+            }
+          ]}
+        />
+      </Sider>
+      <Layout>
+        {/* <Header
+          style={{
+            padding: 0,
+            background: colorBgContainer,
+          }}
+        /> */}
+        <Content
+          style={{
+            margin: '24px 16px 0',
+          }}
+        >
+          <div
+            style={{
+              padding: 24,
+              minHeight: '90vh',
+              background: colorBgContainer,
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+        </Content>
+        <Footer
+          style={{
+            textAlign: 'center',
+          }}
+        >
+          2023 - Educational React App created for PV125 Group!
+        </Footer>
+      </Layout>
+    </Layout>
   );
 }
 
