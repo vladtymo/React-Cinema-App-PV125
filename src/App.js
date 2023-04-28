@@ -6,9 +6,10 @@ import { Privacy } from './components/Privacy';
 
 import { Link, Route, Routes } from 'react-router-dom';
 
-import { HomeOutlined, FileDoneOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { HomeOutlined, FileDoneOutlined, InfoCircleOutlined, LoginOutlined } from '@ant-design/icons';
 import { Layout, Menu, theme } from 'antd';
 import React from 'react';
+import Login from './components/Login';
 const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
@@ -57,6 +58,14 @@ function App() {
                   {React.createElement(FileDoneOutlined)}
                 </Link>,
               label: `Privacy`,
+            },
+            {
+              key: 4,
+              icon:
+                <Link to="/login">
+                  {React.createElement(LoginOutlined)}
+                </Link>,
+              label: `Login`,
             }
           ]}
         />
@@ -84,6 +93,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy" element={<Privacy />} />
+              <Route path="/login" element={<Login />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
