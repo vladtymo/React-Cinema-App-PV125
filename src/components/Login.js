@@ -43,7 +43,7 @@ export default function Login() {
                     {/* <input onChange={emailChange} type="text" name="email" /> */}
                     <input {...register("email")} type="text" name="email" />
                 </div>
-                <div >
+                <div>
                     <label>Password</label>
                     {/* <input ref={passRef} type="password" name="password" /> */}
                     <input {...register("password")} type="password" name="password" />
