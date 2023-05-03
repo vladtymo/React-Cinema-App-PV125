@@ -1,7 +1,10 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { useForm } from "react-hook-form";
+import { UserContext } from "../contexts/user-context";
 
 export default function Login() {
+
+    const { setUsername, clearUsername } = useContext(UserContext);
 
     // --------------------- How to get handle form ---------------------
     // ------- 1. using useRef
@@ -25,6 +28,8 @@ export default function Login() {
         // console.log(`Login data:`, user);
 
         console.log("Login data:", user);
+
+        setUsername(user.email);
     }
 
     // ------- 3. using useForm React Hook

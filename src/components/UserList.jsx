@@ -17,9 +17,16 @@ export default function UserList() {
         console.log("Effect invoke on users changes!");
     }, [users]);
 
+    // invoke only when component is destroyed
+    useEffect(() => {
+        return () => {
+            console.log("Effect invoke on component unmount!");
+        }
+    }, []);
+
     // invoke only when component is rendered
     useEffect(() => {
-        console.log("Effect invoke on start!");
+        console.log("Effect invoke on component mount!");
         loadUsers();
     }, []); // array must be empty
 

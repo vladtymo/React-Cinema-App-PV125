@@ -1,10 +1,15 @@
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
 import { HomeOutlined, FileDoneOutlined, InfoCircleOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons';
-import { Layout, Menu, } from 'antd';
-import React from 'react';
+import { Layout, Menu, Space, Typography } from 'antd';
+import Paragraph from "antd/es/skeleton/Paragraph";
+import { UserContext } from '../contexts/user-context';
 const { Sider } = Layout;
 
 export function Sidebar() {
+
+    const { username } = useContext(UserContext);
+
     return (
         <Sider
             breakpoint="lg"
@@ -16,7 +21,9 @@ export function Sidebar() {
                 console.log(collapsed, type);
             }}
         >
-            <div className="logo" />
+            <div className="logo">
+                <h3 style={{ color: 'white' }}>User: {username}</h3>
+            </div>
             <Menu
                 theme="dark"
                 mode="inline"
