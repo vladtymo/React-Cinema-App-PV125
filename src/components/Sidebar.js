@@ -1,14 +1,20 @@
 import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import { HomeOutlined, FileDoneOutlined, InfoCircleOutlined, UserOutlined, LoginOutlined } from '@ant-design/icons';
+import { HomeOutlined, FileDoneOutlined, InfoCircleOutlined, UserOutlined, LoginOutlined, NumberOutlined } from '@ant-design/icons';
 import { Layout, Menu, Space, Typography } from 'antd';
 import Paragraph from "antd/es/skeleton/Paragraph";
-import { UserContext } from '../contexts/user-context';
+import { UserContext } from '../contexts/user.context';
+// import { CounterContext } from '../contexts/counter.context';
+import { CounterContext, selectCount } from '../store/reducers/counter.reducer';
+import { useDispatch, useSelector } from 'react-redux';
+
 const { Sider } = Layout;
 
 export function Sidebar() {
 
     const { username } = useContext(UserContext);
+    // const { count } = useContext(CounterContext);
+    const count = useSelector(selectCount);
 
     return (
         <Sider
@@ -23,6 +29,7 @@ export function Sidebar() {
         >
             <div className="logo">
                 <h3 style={{ color: 'white' }}>User: {username}</h3>
+                <p style={{ color: 'white' }}>Counter: {count}</p>
             </div>
             <Menu
                 theme="dark"
@@ -63,6 +70,14 @@ export function Sidebar() {
                     },
                     {
                         key: 5,
+                        icon:
+                            <Link to="/counter">
+                                <NumberOutlined />
+                            </Link>,
+                        label: `Counter`,
+                    },
+                    {
+                        key: 6,
                         icon:
                             <Link to="/login">
                                 {React.createElement(LoginOutlined)}

@@ -11,7 +11,7 @@ export const UserContext = createContext({
 export const UserProvider = ({ children }) => {
     const [username, setUsername] = useState('');
 
-    const clearUsername = () => username = "";
+    const clearUsername = () => setUsername("");
 
     const value = { username, setUsername, clearUsername };
 

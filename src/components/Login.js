@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
 import { useForm } from "react-hook-form";
-import { UserContext } from "../contexts/user-context";
+import { UserContext } from "../contexts/user.context";
 
 export default function Login() {
 
@@ -62,6 +62,7 @@ export default function Login() {
                     <button type="submit">Login</button>
                 </div>
             </form>
+            <button type="button" onClick={clearUsername}>Clear Username</button>
         </div>
     );
 }

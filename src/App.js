@@ -11,6 +11,7 @@ import React from 'react';
 import Login from './components/Login';
 import { Sidebar } from './components/Sidebar';
 import UserList from './components/UserList';
+import { Counter } from './components/Counter';
 const { Header, Content, Footer, Sider } = Layout;
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/users" element={<UserList />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/counter" element={<Counter />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
