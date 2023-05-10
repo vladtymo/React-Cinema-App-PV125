@@ -4,7 +4,7 @@ export function Home() {
     return (
         <>
             <h2>Welcome</h2>
-            <p>This is Home Page</p>
+            <p>This is Home Page!!!</p>
             <Button type="primary">Primary Button</Button>
         </>
     );
